@@ -1,0 +1,31 @@
+<h1> Q1 3rd Graded Exercise submitted by Hannah Chan of 9-Sodium</h1>
+
+<label for="in1">Meal Price: </label>
+<input id="in1" type="number" placeholder="Enter meal price"> <br>
+<label for="in2">Tip: </label> 
+<input id="in2" type="number" placeholder="Enter tip percentage"> <br>
+<label for="in3">Service Charge: </label>
+<input id="in3" type="number" placeholder="Enter service charge percentage"> <br>
+<button onclick="calculateTotal()">Calculate Total</button>
+
+
+<script>
+
+    function calculateTotal() {
+        var mealPrice = parseFloat(document.getElementById("in1").value);
+        var tipPercentage = parseFloat(document.getElementById("in2").value);
+        var serviceChargePercentage = parseFloat(document.getElementById("in3").value);
+
+        if (isNaN(mealPrice) || isNaN(tipPercentage) || isNaN(serviceChargePercentage)) {
+            alert("Please enter valid numbers for all fields.");
+            return;
+        }
+
+        var tipAmount = (tipPercentage / 100) * mealPrice;
+        var serviceChargeAmount = (serviceChargePercentage / 100) * mealPrice;
+        var totalAmount = mealPrice + tipAmount + serviceChargeAmount;
+
+        alert("Total amount to be paid: " + totalAmount.toFixed(2));
+    }
+
+</script>
