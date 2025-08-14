@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h2> Q1 2rd Graded Exercise submitted by Anica Malang of Sodium</h2>
+
+<input id="in1" type="number" placeholder="Meal Price"> 
+<input id="in2" type="number" placeholder="Tip"> 
+<input id="in3" type="number" placeholder="Service Charge (%)"> 
+    
+<button onclick="totalMeal()" > Accept Input </button>
+    
+
+    <script>
+        function totalMeal() {
+            var mp = document.getElementById("in1")
+            var tip = document.getElementById("in2")
+            var sc = document.getElementById("in3")
+            var tm = mp + tip + (sc / 100 * mp)
+            document.write("Total meal: " + tm)
+        }
+    </script>
+
+</body>
+</html>
