@@ -1,0 +1,25 @@
+<html>
+<head>
+    <title>
+        Accepting input
+    </title>
+</html>
+<body>
+    How old are you?
+    <br />
+    <input id="inp_age">
+    <button id="btn_submit">Submit</button>
+</div>
+<script type="text/javascript">
+    const btn = document.getElementById("btn_submit");
+    const age = document.getElementById("inp_age");
+
+    btn.addEventListener('click', btn_clicked);
+    function btn_clicked() {
+        alert(age.value);
+        alert("You are " + (65-age.value) + " years away from retirement.");
+        document.write("You are " + (65-age.value) + " years away from retirement.");
+        console.log("You are " + (65-age.value) + " years away from retirement.");
+    }
+</script>
+</body>
