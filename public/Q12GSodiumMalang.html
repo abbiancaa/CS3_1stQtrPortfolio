@@ -2,22 +2,35 @@
 <html>
 <body>
 
-    <h2> Q1 2rd Graded Exercise submitted by Anica Malang of Sodium</h2>
+    <h2> Q1 2nd Graded Exercise submitted by Anica Malang of Sodium</h2>
 
-<input id="in1" type="number" placeholder="Meal Price"> 
-<input id="in2" type="number" placeholder="Tip"> 
-<input id="in3" type="number" placeholder="Service Charge (%)"> 
+<input id="in1" type="number" placeholder="Meal Price"> <br>
+<input id="in2" type="number" placeholder="Tip"> <br>
+<input id="in3" type="number" placeholder="Service Charge (%)">
     
 <button onclick="totalMeal()" > Accept Input </button>
     
+<div id="out1" >
+
+</div>
+
 
     <script>
         function totalMeal() {
-            var mp = document.getElementById("in1")
-            var tip = document.getElementById("in2")
-            var sc = document.getElementById("in3")
-            var tm = mp + tip + (sc / 100 * mp)
-            document.write("Total meal: " + tm)
+            var n1 = document.getElementById("in1");
+            var n2 = document.getElementById("in2");
+            var n3 = document.getElementById("in3");
+
+            var mp = parseFloat(n1);
+            var tip = parseFloat(n2);
+            var sc = parseFloat(n3);
+
+            var tm = mp + tip + (sc / 100 * mp);
+
+            var tc = tm.toFixed(2);
+            
+
+            out1.innerHTML += "<p>" + "Total Meal: " + parseFloat(tc) + "</p>"
         }
     </script>
 
