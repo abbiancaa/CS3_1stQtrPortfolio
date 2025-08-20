@@ -8,29 +8,30 @@
 <input id="in2" type="number" placeholder="Tip"> <br>
 <input id="in3" type="number" placeholder="Service Charge (%)">
     
-<button onclick="totalMeal()" > Accept Input </button>
+<button onclick="totalMeal()"> Accept Input </button>
     
 <div id="out1" >
 
 </div>
 
-
     <script>
         function totalMeal() {
-            var n1 = document.getElementById("in1");
-            var n2 = document.getElementById("in2");
-            var n3 = document.getElementById("in3");
+            var in1 = document.getElementById("in1");
+            var in2 = document.getElementById("in2");
+            var in3 = document.getElementById("in3");
 
-            var mp = parseFloat(n1);
-            var tip = parseFloat(n2);
-            var sc = parseFloat(n3);
+            var s1 = in1.value;
+            var s2 = in2.value;
+            var s3 = in3.value;
+
+            var mp = parseFloat(s1);
+            var tip = parseFloat(s2);
+            var sc = parseFloat(s3);
 
             var tm = mp + tip + (sc / 100 * mp);
-
-            var tc = tm.toFixed(2);
             
-
-            out1.innerHTML += "<p>" + "Total Meal: " + parseFloat(tc) + "</p>"
+            document.getElementById("out1").innerHTML = "Total Meal: " + tm.toFixed(2);
+            
         }
     </script>
 
