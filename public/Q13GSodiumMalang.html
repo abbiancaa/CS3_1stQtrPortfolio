@@ -4,13 +4,18 @@
 
    <h2> Q1 3rd Graded Exercise submitted by Anica Malang of 9 - Sodium</h2>
    
-    Guess the number: *** <br>
-    The number is from 1 to 100 <br>
+    <p>
+        Guess the number: *** <br>
+        The number is from 1 to 100 <br>
+    </p>
 
     <label>Enter your guess:
     <input type="text" id="guess"> </label>
 
     <button onclick="checkIt()"> Check It </button> <br>
+
+    <p> Result: </p>
+
     <div id="out1" ></div>
 
         <script>
@@ -23,13 +28,13 @@
         var g = guess.value
 
             if(g == dNumber){
-                document.getElementById("out1").innerHTML = "Result: You are correct!";
+                document.getElementById("out1").innerHTML = "You are correct!";
             }
             else if(g < dNumber){
-                document.getElementById("out1").innerHTML = "Result: Higher";
+                document.getElementById("out1").innerHTML = "Higher";
             }
             else if(g > dNumber){
-                document.getElementById("out1").innerHTML = "Result: Lower";
+                document.getElementById("out1").innerHTML = "Lower";
             }
             
         }
