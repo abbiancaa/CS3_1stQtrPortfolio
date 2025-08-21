@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+   <h2> Q1 3rd Graded Exercise submitted by Hannah Princess G. Chan of 9 Sodium</h2>
+
+    <label for="in1">Guess the number: ****</label> <br> <br>
+    <label for="in2">The number is from 1 to 100 </label> <br> <br>
+    <label for="in3">Enter your guess: </label>
+    <input id="guess" type="number" min="1" max="100"> <br> <br>
+    <button onclick="checkIt()">Check it</button> <br> <br>
+    <label id="result" for="result">Result: </label>
+
+    <script>
+
+       var dNumber = Math.floor(Math.random() * 100) + 1; // generates a number from 1  to 100 when the page loads
+
+        function checkIt() {
+              var guess = document.getElementById("guess").value;
+              var result = document.getElementById("result");
+
+                if (guess > dNumber ) {
+                    result.innerHTML = "Result: Lower"
+                } else if (guess < dNumber) {
+                    result.innerHTML = "Result: Higher";
+                } else {
+                    result.innerHTML = "Result: You are correct!";
+                }
+            
+        }
+    </script>
+
+    <footer>
+        <hr/>
+        <p>W3Schools.com. (n.d.). Input Text Value Property. <i>W3Schools.</i>
+                https://www.w3schools.com/jsref/prop_text_value.asp</p>
+</body>
+
+</html>
