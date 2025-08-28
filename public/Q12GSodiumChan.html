@@ -8,8 +8,13 @@
     <label for="in2">Tip: </label> 
     <input id="in2" type="number"> <br>
     <label for="in3">Service Charge: </label>
-    <input id="in3" type="number"> <br>
-    <button onclick="totalMeal()">Accept Input</button>
+    <input id="in3" type="number"> <br> <br>
+    <button onclick="totalMeal()">Accept Input</button> <br> <br>
+    <label for="total">Total Meal: </label>
+
+    <div id="total"></div>
+
+    </div>
 
     <script>
         function totalMeal() {
@@ -19,7 +24,8 @@
 
         var totalCost = mp + tip + (sc / 100) * mp;
 
-            document.write("Total Meal: " + totalCost.toFixed(2));
+            var totalmeal = document.getElementById("total");
+            totalmeal.innerHTML = totalCost.toFixed(2);
     }
     </script>
 
