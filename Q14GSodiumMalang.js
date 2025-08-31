@@ -2,7 +2,7 @@ process.stdin.on('data', input => {
 
   let greeting = input.toString().trim();
 
-hola();
+hola(greeting);
 
 function hola(greeting){
     switch(greeting){

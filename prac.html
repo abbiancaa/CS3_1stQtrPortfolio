@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>hi so like cs pls be kind to me</h1>
+
+<button onclick="outp()">Click!</button>
+<p id="demo"></p>
+
+<script> 
+    function outp(){
+        var txt;
+        if (confirm("Press a button!")){
+            txt = "u pressed ok :)";
+        }
+        else{
+            txt = "u canceled :(";
+        }
+        document.getElementById("demo").innerHTML = txt;
+    }
+
+</script>
+
+</body>
+</html>
