@@ -6,7 +6,10 @@
 
 <button onclick="outp()">Click!</button>
 <p id="demo"></p>
-<p> hi </p>
+
+<input id="i1" type="text" placeholder="type smth">
+<button onclick="outp2()">output</button>
+<p id="demo2"></p>
 <script> 
     
     function outp(){
@@ -18,6 +21,13 @@
             txt = "u canceled :(";
         }
         document.getElementById("demo").innerHTML = txt;
+    }
+
+    function outp2(){
+        var i1 = document.getElementById("i1");
+        var in1 = i1.value;
+        document.getElementById("demo2").innerHTML = in1;
+        window.alert(in1);
     }
 
 </script>
