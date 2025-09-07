@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+<body>
+
+<input type="text" id="guess" placeholder="Enter a number"></input>
+<button onclick="checkIt()"> Check </button> <br>
+
+<p id="outp"></p>
+
+<script>
+    
+    var dNumber = Math.floor(Math.random() * 100) + 1; // generates a number from 1  to 100 when the page loads
+
+    function checkIt(){
+
+        var guess = document.getElementbyId("guess");
+        var g = guess.value;
+        
+        if(g == dNumber){
+            document.getElementbyId("outp").innerHTML = "You are Correct :D";
+        }
+        else if(g > dNumber){
+            document.getElementbyId("outp").innerHTML = "Lower :<";
+        }
+        else if(g < dNumber){
+            document.getElementbyId("outp").innerHTML = "Higher :(";
+        }
+    }
+    
+    /*var guess = document.getElementById("guess");
+        var g = guess.value
+
+            if(g == dNumber){
+                document.getElementById("outp").innerHTML = "You are correct :D";
+            }
+            else if(g < dNumber){
+                document.getElementById("outp").innerHTML = "Higher :(";
+            }
+            else if(g > dNumber){
+                document.getElementById("outp").innerHTML = "Lower :(";
+            }*/
+
+</script>
+
+</body>
+</head>
