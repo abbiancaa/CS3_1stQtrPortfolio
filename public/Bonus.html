@@ -1,0 +1,55 @@
+<h1 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Guess my Word!</h1>
+<p id="wordDisplay"></p>
+<input type="text" id="guessInput" maxlength="1">
+<h3 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">This is how I'd describe myself! ;--;</h3>
+<button onclick="makeGuess()" style="background-color: palevioletred;">Take a guess! </button>
+<p id="message"></p>
+<link rel="stylesheet" href="style.css">
+<body style="background-color: lightpink;">
+
+
+<script>
+  let secretWord = ["c", "u", "r", "i", "o", "u", "s"];
+  let guessedWord = ["_", "_", "_", "_", "_", "_", "_"];
+
+  document.getElementById("wordDisplay").textContent = guessedWord.join(" ");
+
+  function makeGuess() {
+    let guess = document.getElementById("guessInput").value.toLowerCase();
+    let correct = false;
+
+    for (let i = 0; i < secretWord.length; i++) {
+      if (secretWord[i] === guess) {
+        guessedWord[i] = guess;
+        correct = true;
+      }
+    }
+
+    document.getElementById("wordDisplay").textContent = guessedWord.join(" ");
+    document.getElementById("message").textContent = correct ? "✅ Correct!" : "❌ Try again.";
+    document.getElementById("guessInput").value = "";
+
+    
+    if (!guessedWord.includes("_")) {
+      document.getElementById("message").textContent = "🎉 You've guessed the word! HOOORAAAYYY :3  ";
+    }
+  }
+</script>
+
+
+<button onclick="playAgain()" style="background-color: lightgreen;">Play Again? </button>
+
+<script>
+    function playAgain() {
+        guessedWord = ["_", "_", "_", "_", "_", "_", "_"];
+        document.getElementById("wordDisplay").textContent = guessedWord.join(" ");
+        document.getElementById("message").textContent = "";
+        document.getElementById("guessInput").value = "";
+
+    // What’s one thing you learned about loops this quarter? : I learned how loops can be useful in coding, especially since coding can get tedious at times. It's more convenient and effective as well.
+    // How do arrays make your code more powerful? : Arrays can store multiple values, which makes it easier to manage and change data in your code in the long run, this also saves time!
+    // What’s one feature you’d add if you had more time? : I would want to add a feature that would show how many tries the user or player has left to guess the word so that they'd be challenged to think more! I'd also want to add pictures that describe/portray the word, kind of like 4 pics one word hehe.
+
+    }
+</script>
+
