@@ -1,0 +1,46 @@
+<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+  margin: 1rem;
+  font-weight: lighter;
+  font-family: 'work sans';
+  color: indigo;
+  background-color: lavender;
+}
+  h1{ 
+    font-weight: bolder;
+    font-size: 3.5rem;
+    font-family: 'work sans';
+  } 
+  </style>
+
+<h1>Guess My Word</h1>
+<p id="wordDisplay"></p>
+
+<input type="text" id="guessInput" maxlength="1">
+<button onclick="makeGuess()">guess :D</button>
+<p id="message"></p>
+
+<script>
+  let secretWord = ["a", "r", "t", "i", "s", "t", "i", "c"];
+  let guessedWord = ["_", "_", "_", "_", "_", "_", "_", "_"];
+
+  document.getElementById("wordDisplay").textContent = guessedWord.join(" ");
+
+  function makeGuess() {
+    let guess = document.getElementById("guessInput").value.toLowerCase();
+    let correct = false;
+
+    for (let i = 0; i < secretWord.length; i++) {
+      if (secretWord[i] === guess) {
+        guessedWord[i] = guess;
+        correct = true;
+      }
+    }
+
+    document.getElementById("wordDisplay").textContent = guessedWord.join(" ");
+    document.getElementById("message").textContent = correct ? "✅ oh yes, you're correct!" : "❌ oh no, try again :(";
+    document.getElementById("guessInput").value = "";
+  }
+</script>
+
