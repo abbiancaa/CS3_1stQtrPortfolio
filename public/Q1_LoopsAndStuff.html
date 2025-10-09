@@ -1,0 +1,54 @@
+<!-- <h1>Numbers Even</h1>
+<ul id="numberList"></ul>
+
+<script>
+  let list = document.getElementById("numberList");
+  for (let i = 2; i <= 10; i += 2) {
+    list.innerHTML += `<li> ${i}</li>`;
+  }
+</script>
+
+<h1>My Favorite Animals</h1>
+<ul id="fruitList"></ul>
+
+<script>
+  let fruits = ["dogs", "cats", "bunnies", "capybara", "pandas"];
+  let list = document.getElementById("fruitList");
+
+  for (let i = 0; i < fruits.length; i++) {
+    list.innerHTML += `<li>${fruits[i]}</li>`;
+  }
+</script>
+-->
+<h1>Guess a Letter</h1>
+<input type="text" id="letterInput" maxlength="1">
+<button onclick="addGuess()">Guess</button>
+<p>Guessed letters: <span id="guesses"></span></p>
+
+<p id="outp"></p>
+<p id="outc"></p>
+
+<script>
+  let guessedLetters = [];
+
+  function addGuess() {
+    let letter = document.getElementById("letterInput").value;
+    guessedLetters.push(letter);
+    document.getElementById("guesses").textContent = guessedLetters.join(", ");
+    document.getElementById("letterInput").value = "";
+
+    //var i = 0;
+    if(letter == "a"){
+        document.getElementById("outp").innerHTML = "Oh yes";
+    }
+    else{
+        document.getElementById("outp").innerHTML = "Oh nah";
+        //i += 1;
+        //document.getElementById("outc").innerHTML = "Guess Counter: " + i;
+    }
+    }
+
+
+
+</script>
+
