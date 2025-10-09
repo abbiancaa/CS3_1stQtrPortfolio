@@ -1,34 +1,24 @@
-<h1> Hannah Chan - 9-Na - Aug 11, 2025</h1>
+<h1> Anica - Sodium - Aug 11, 2025 </h1>
 
-<h2> Second Graded Exercise - First Quarter</h2>
+<h2> Second Graded Exercise - First Quarter </h2>
 
 <p> Here's a list of my friends </p>
-<label for="in1">First friend:</label>
-<input id="in1" type="text" placeholder="Enter first friend's name"> <br>
-<label for="in2">Enter friend's birthday:</label>
-<input id="in2" type="date" placeholder="Enter friend's birthday"> <br>
-<button onclick="addFriend()">Add Friend</button>
+<input id="in1" type="number" placeholder="Friend 1"> <br>
+<input id="in2" type="text" placeholder="Friend 2">
+<button onclick="addFriends()" > Add Friends </button>
 
-<div id="out1"></div>
-
+<div id="out1" >
 
 </div>
 
-<!-- this is an html comment -->
-
 <script>
-        // i love cats :3
 
-    function addFriend() {
-        var friend1 = document.getElementById("in1").value;
-        var friend2 = document.getElementById("in2").value;
+function addFriends() {
+    var in1 = document.getElementById("in1")
+    var in2 = document.getElementById("in2")
+    var out1 = document.getElementById("out1")
 
-        if (friend1 && friend2) {
-            var out = document.getElementById("out1");
-            out.innerHTML += "<p>" + friend1 + " and " + friend2 + "</p>";
-        } else {
-            alert("Please enter both friends' names.");
-        }
-    }
-
+    out1.innerHTML += "<p>" + in1.value + "</p>"
+    out1.innerHTML += "<p>" + in2.value + "</p>"
+}
 </script>
