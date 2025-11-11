@@ -1,55 +1,111 @@
 
 <!DOCTYPE html>
 <html>
-<title>Reaction Game Na21</title>
+<title>Keyboard Game !</title>
 <body>
+  <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@600&display=swap" rel="stylesheet">
     <style>
+      body{
+        background-image: radial-gradient(#ea9aa6, #f4efef);
+      }
+
+      #head {
+        font-family: 'dynapuff';
+        font-weight: bolder;
+        color: white;
+        text-align: center;
+        margin: 40px;
+      }
+
+      footer{
+        font-family: 'work sans';
+        color: white;
+        padding: 10px;
+        text-align: center;
+      }
+
+      .item {
+        text-align: center;
+        font-family: 'dynapuff';
+        background-color: #fee7e7;
+        color: #9f6275;
+        border-radius: 1em;
+        padding: 20px;
+        width: 400px;
+      }
+
+      .container {
+        height: 500px;
+        display: grid;
+        place-items: center;
+      }
 
     </style>
-    <div>
-        
+
+    <h1 id = "head"> Anica Malang || 9 - Sodium || SY 2025-2026 </h1>
+
+    <div class = "container">
+        <div class = "item">
+
+          <div class = "game">
+            <h1>Type the letter: </h1> <br>
+            <h1 id = "ltr"></h1> <br>
+          </div>
+
+            <p id = "rw"></p>
+            <h3>Key pressed: </h3>
+            <p id = "kp"></p>
+
+          <div class = "scr">
+            <h1>Score: </h1>
+            <p id = "score"></p>
+          </div>
+
+        </div>
     </div>
-</body>
 
-</html>
-<!-- <body>
-  <h1>Click anywhere!</h1>
-  <script>
-    document.body.onclick = changeColor
+    <footer> thank you to carly and erin for helping me out :D </footer>
+    <footer>&copy; Anica Malang. All Rights Reserved.</footer>
 
-    function changeColor() {
-      document.body.style.backgroundColor = "royalblue";
-    }
-  </script>
-</body>
-
-
-<div id="box" style="width:100px; height:100px; background:red;"></div>
 <script>
-  const box = document.getElementById("box");
-  box.onmouseover = changeColorScale;
+  var score = 0;
+  const letters = [
+    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' ];
 
-  function changeColorScale() {
-    box.style.backgroundColor = "royalblue";
-    box.style.transform = "scale(1.2)";
+  function randLetter() {
+    const ind = Math.floor(Math.random() * letters.length);
+    return letters[ind];
   }
 
-  box.onmouseout = resetBox;
-  
-  function resetBox() {
-    box.style.backgroundColor = "red";
-    box.style.transform = "scale(1)";
-  } 
+  function newLetter() {
+    const letterId = document.getElementById('ltr');
+    letterId.textContent = randLetter(); 
+  }
+
+  document.addEventListener('keydown', function(event) {
+    const dispLtr = document.getElementById('ltr').textContent;
+      if (event.key.toUpperCase() === dispLtr) {
+
+        score++;
+
+        document.getElementById('rw').textContent = " ✅Correct !";
+
+        document.getElementById('kp').textContent = event.key.toUpperCase();
+
+        document.getElementById('score').textContent = score;
+        newLetter();
+      }
+
+      else {
+        document.getElementById('rw').textContent = " ❌Try Again !";
+        document.getElementById('kp').textContent = event.key.toUpperCase();
+    }
+  });
+
+  newLetter();
 
 </script>
 
-<body>
-  <h2>Press any key</h2>
-  Refresh page to reset
-  <script>
-    document.body.onkeypress = changeColorPress;
-    function changeColorPress(){
-        document.body.style.backgroundColor = "royalblue";
-    }
-  </script>
-</body> -->
+</body>
+</html>
