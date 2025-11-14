@@ -1,4 +1,4 @@
-var space = " ";
+/* var space = " ";
 var star = " ";
 var j;
 
@@ -13,4 +13,9 @@ for(let i = 1; i <=5; i++){
     console.log(space+star);
     space = " ";
     star = " ";
-}
+} */
+
+var s = "one";
+var n = 1;
+
+console.log(s+n)
