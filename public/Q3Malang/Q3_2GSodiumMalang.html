@@ -1,66 +1,126 @@
 <!DOCTYPE html>
-<html> 
-<h1>Q3 2G Sodium Malang</h1>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q3 2G Sodium Malang</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
 
-<form method="post" action="submit">
+</head>
+
+<style>
+    html{
+        font-family: "Lexend";
+        font-size: larger;
+        background-color: #fafdff;
+    }
+
+    form{
+        background-color: #f0faff;
+        padding: 30px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.35);
+        border-radius: 20px;
+        width: 450px;
+        margin: 10px auto;
+    }
+
+    #buttons{
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        width: 100px;
+        height: 35px;
+        font-size: large;
+    }
+
+</style>
+
+<form method="post" action="submit" onsubmit="sub()" onreset="res()" id="G2">
     <fieldset>
-    <label for="Sid">StudentID:</label><br>
-    <input type="number" id="Sid" name="Sid" required><br>
+        <legend class="leg">Personal Information</legend>
 
-    <label for="fname">Full name:</label><br>
-    <input type="text" id="fname" name="fname" required><br>
+        <label for="Sid">StudentID:</label><br>
+        <input type="number" id="Sid" name="Sid" required><br>
 
-    <label for="bday">Birthday:</label><br>
-    <input type="date" id="bday" name="bday" required><br>
+        <label for="fname">Full name:</label><br>
+        <input class="txt" onblur="blurF(this)" type="text" id="fname" name="fname" required><br>
 
-    <label for="em">Email address:</label><br>
-    <input type="email" id="em" name="em" required><br>
+        <label for="bday">Birthday:</label><br>
+        <input type="date" id="bday" name="bday" required><br>
 
-    <label for="mpn">Mobile phone:</label><br>
-    <input type="text" id="mpn" name="mpn" required><br>
+        <label for="em">Email address:</label><br>
+        <input type="email" id="em" name="em" required><br>
+    </fieldset> <br><br>
 
-    <label for="gl">Grade Level:</label><br>
-    <select id="gl" name="gl" required>
-        <option value="Select Grade Level">Select Grade Level</option>
-        <option value="Grade 7">Grade 7</option>
-        <option value="Grade 8">Grade 8</option>
-        <option value="Grade 9">Grade 9</option>
-        <option value="Grade 10">Grade 10</option>
-    </select> <br>
+    <fieldset>
+        <legend class="leg">Additional Information</legend>
 
-    <label for="in_ex">Intern / Extern:</label><br>
-    <input type="radio" id="in" value="Intern" name="in_ex" required>
-    <label for="in">Intern</label><br>
-    <input type="radio" id="ex" name="in_ex" value="Extern" required>
-    <label for="ex">Extern</label><br>
+        <label for="mpn">Mobile phone:</label><br>
+        <input class="txt" onblur="blurF(this)" type="text" id="mpn" name="mpn" required><br>
 
-    <label for="poc">Preferred Organization / Club</label><br>
-    <select id="poc" name="poc" required>
-        <option value="Select Club">Select Club</option>
-        <option value="Aksis">Aksis</option>
-        <option value="Alianti">Alianti</option>
-        <option value="Math Club">Math Club</option>
-        <option value="Pallastro">Pallastro</option>
-        <option value="Pisay.XYZ">Pisay.XYZ</option>
-        <option value="Sagala">Sagala</option>
-    </select> <br>
+        <label for="gl">Grade Level:</label><br>
+        <select id="gl" name="gl" required>
+            <option value="Select Grade Level">Select Grade Level</option>
+            <option value="Grade 7">Grade 7</option>
+            <option value="Grade 8">Grade 8</option>
+            <option value="Grade 9">Grade 9</option>
+            <option value="Grade 10">Grade 10</option>
+        </select> <br>
 
-    <label for="q">Why do you want to join:</label><br>
-    <textarea id="q" name="q" required></textarea><br><br>
+        <label for="in_ex">Intern / Extern:</label><br>
+        <input type="radio" id="in" value="Intern" name="in_ex" required>
+        <label for="in">Intern</label><br>
+        <input type="radio" id="ex" name="in_ex" value="Extern" required>
+        <label for="ex">Extern</label><br>
 
-    <input type="submit" value="Submit">
-    <input type="reset" value="Reset">
+        <label for="poc">Preferred Organization / Club</label><br>
+        <select id="poc" name="poc" required>
+            <option value="Select Club">Select Club</option>
+            <option value="Aksis">Aksis</option>
+            <option value="Alianti">Alianti</option>
+            <option value="Math Club">Math Club</option>
+            <option value="Pallastro">Pallastro</option>
+            <option value="Pisay.XYZ">Pisay.XYZ</option>
+            <option value="Sagala">Sagala</option>
+        </select> <br>
+
+        <label for="q">Why do you want to join:</label><br>
+        <textarea class="txt" onblur="blurF(this)" id="q" name="q" required></textarea>
+    </fieldset><br>
+
+    <div id="buttons">
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+    </div>
 
 </form>
-<!--StudentID (numeric type)
-Full Name (input type for text)
-Birthday (input type date)
-Email address (input type for email)
-Mobile phone (input type for text)
-Grade Level (drop down menu with appropriate values different from what is displayed on the screen)
-Intern / Extern (radio button with appropriate values different from what is displayed on the screen)
-Preferred Organization / Club (drop down menu - provide your own list with at least 5 items with appropriate values different from what is displayed on the screen)
-Why do you want to join (textarea).
-A submit and reset buttons-->
+
+<script>
+    function blurF(thisElement){
+        var text = thisElement.value;
+        if(text == ""){
+            thisElement.style.borderColor = "#dd655f";
+            thisElement.style.borderRadius = "5px";
+            thisElement.style.borderWidth = "1.5px";
+        }
+    }
+
+    function sub(){
+        document.getElementById('G2').addEventListener('submit', function (e) {
+        if (!confirm('Confirm submission?')) {
+            e.preventDefault();
+        }
+    });
+    }
+    
+    function res(){
+        document.getElementById('G2').addEventListener('reset', function (e) {
+        if (!confirm('Confirm reset?')) {
+            e.preventDefault();
+        }
+    });
+    }
+
+</script>
 
 </html>
