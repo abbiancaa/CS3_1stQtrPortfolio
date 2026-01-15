@@ -28,14 +28,39 @@
         display: flex;
         justify-content: center;
         gap: 5px;
-        width: 100px;
-        height: 35px;
         font-size: large;
+    }
+
+    input{
+        width: 100%;
+        height: auto;
+        margin-bottom: 1px;
+        font-size: large;
+        box-sizing: border-box;
+    }
+
+    input[name="in_ex"]{
+        width: auto;
+    }
+
+    select{
+        width: 100%;
+        height: auto;
+        margin-bottom: 1px;
+        font-family: "Lexend";
+        font-size: medium;
+        box-sizing: border-box;
+    }
+
+    input:focus, select:focus, textarea:focus{
+        outline: #89b6cd solid 2px;
+        border-radius: 5px;
+        border-width: 1.5px;
     }
 
 </style>
 
-<form method="post" action="submit" onsubmit="sub()" onreset="res()" id="G2">
+<form method="post" action="submit" onsubmit="return sub()" onreset="return res()" id="G2">
     <fieldset>
         <legend class="leg">Personal Information</legend>
 
@@ -65,6 +90,8 @@
             <option value="Grade 8">Grade 8</option>
             <option value="Grade 9">Grade 9</option>
             <option value="Grade 10">Grade 10</option>
+            <option value="Grade 11">Grade 11</option>
+            <option value="Grade 12">Grade 12</option>
         </select> <br>
 
         <label for="in_ex">Intern / Extern:</label><br>
@@ -83,10 +110,10 @@
             <option value="Pisay.XYZ">Pisay.XYZ</option>
             <option value="Sagala">Sagala</option>
         </select> <br>
+        </fieldset><br>
 
         <label for="q">Why do you want to join:</label><br>
-        <textarea class="txt" onblur="blurF(this)" id="q" name="q" required></textarea>
-    </fieldset><br>
+        <textarea class="txt" onblur="blurF(this)" id="q" name="q" required></textarea><hr>
 
     <div id="buttons">
         <input type="submit" value="Submit">
@@ -98,27 +125,35 @@
 <script>
     function blurF(thisElement){
         var text = thisElement.value;
-        if(text == ""){
-            thisElement.style.borderColor = "#dd655f";
+        if(text === ""){
+            thisElement.style.border = "none";
+            thisElement.style.outline = "#dd655f solid 1.5px";
             thisElement.style.borderRadius = "5px";
-            thisElement.style.borderWidth = "1.5px";
+
+        }
+        else{
+            thisElement.style.border = "none";
+            thisElement.style.outline = "lightgrey solid 1px";
+            thisElement.style.borderRadius = "5px";
         }
     }
 
     function sub(){
-        document.getElementById('G2').addEventListener('submit', function (e) {
-        if (!confirm('Confirm submission?')) {
-            e.preventDefault();
+        if(confirm('Confirm submission?')){
+            return true;
         }
-    });
+        else{
+            return false;
+        }
     }
-    
+
     function res(){
-        document.getElementById('G2').addEventListener('reset', function (e) {
-        if (!confirm('Confirm reset?')) {
-            e.preventDefault();
+        if(confirm('Confirm reset of information?')){
+            return true;
         }
-    });
+        else{
+            return false;
+        }
     }
 
 </script>
