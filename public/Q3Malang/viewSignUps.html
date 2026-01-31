@@ -100,7 +100,7 @@
             for(let i = 0; i < info.length; i++){
                 let data = info[i];
 
-                if(filter === "AC" || data.club === filter){
+                if(filter === "AC" || info[i].club === filter){
 
                     cTable.innerHTML += `
                     <tr>
@@ -111,15 +111,13 @@
                         <td>${data.em}</td>
                         <td>${data.phoneNo}</td>
                         <td>${data.inex}</td>
-                    </tr>
-                    `;
+                    </tr>`;
                 }
             }
 
-            let c = cTable.rows.length;
-            document.getElementById('suCount').innerText = "Total Sign Ups: " + c;
+            document.getElementById('suCount').innerText = "Total Sign Ups: " + cTable.rows.length;
             
-            if(c === 0){
+            if(cTable.rows.length === 0){
                 document.getElementById('empty').style.display = "block";
             }
             else{
