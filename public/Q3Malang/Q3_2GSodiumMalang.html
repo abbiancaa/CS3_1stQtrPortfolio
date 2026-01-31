@@ -8,11 +8,17 @@
 
 </head>
 
+<h1>Club Sign Up Form</h1>
+
 <style>
+    h1{
+        text-align: center;
+    }
+
     html{
         font-family: "Lexend";
         font-size: larger;
-        background-color: #fafdff;
+        background-color: #eaf7ff;
     }
 
     form{
@@ -24,11 +30,26 @@
         margin: 10px auto;
     }
 
-    #buttons{
-        display: flex;
+    .buttons{
+        width: 100%;
+        display: block;
         justify-content: center;
         gap: 5px;
         font-size: large;
+    }
+
+    #vsu{
+        display: block; 
+        width: 100%;
+        margin: 2px 0 0 0;
+
+        justify-content: center; 
+        font-size: large; 
+        background-color: #c8edff; 
+
+        border: none; 
+        border-radius: 5px;
+        
     }
 
     input{
@@ -50,6 +71,7 @@
         font-family: "Lexend";
         font-size: medium;
         box-sizing: border-box;
+        background-color: white;;
     }
 
     input:focus, select:focus, textarea:focus{
@@ -60,7 +82,7 @@
 
 </style>
 
-<form method="post" onsubmit="return sub()" onreset="return res()" id="G2">
+<form method="post" onsubmit="return confirm('Confirm Submission?')" onreset="return res()" id="G2">
     <fieldset>
         <legend class="leg">Personal Information</legend>
 
@@ -115,14 +137,14 @@
         <label for="q">Why do you want to join:</label><br>
         <textarea class="txt" onblur="blurF(this)" id="q" name="q" required></textarea><hr>
 
-    <div id="buttons">
-        <input type="submit" value="Submit">
-        <input type="reset" value="Reset">
-    </div>
+        <button class="buttons" type="submit">Submit</button>
+        <button class="buttons" type="reset">Reset</button>
+        <button id="vsu" onclick="window.location.href='viewSignUps.html'">View Sign Ups</button>
 
 </form>
 
 <script>
+    //red outline if text is empty 
     function blurF(thisElement){
         var text = thisElement.value;
         if(text === ""){
@@ -138,6 +160,7 @@
         }
     }
 
+    //confirm submission and reset
     function sub(){
         if(confirm('Confirm submission?')){
             return true;
@@ -155,6 +178,51 @@
             return false;
         }
     }
+
+    
+
+    //local storage 
+    /* const formD = {
+        sid: sid.value,
+        fname: fname.value,
+        bday: bday.value,
+        em: em.value,
+        mpn: mpn.value,
+        gl: gl.value,
+        inex: document.querySelector('input[name="in_ex"]:checked').value,
+        poc: poc.value,
+        q: q.value
+    } */
+
+    const form = document.getElementById('G2');
+
+    const sid = document.getElementById('Sid').value.trim();
+    const fname = document.getElementById('fname').value.trim();
+    /* const bday = document.getElementById('bday').value.trim();
+    const em = document.getElementById('em').value.trim();
+
+    const mpn = document.getElementById('mpn').value.trim();
+    const gl = document.getElementById('gl').value.trim();
+    const in_ex = document.querySelector('input[name="in_ex"]:checked').value;
+    const poc = document.getElementById('poc').value.trim();
+
+    const q = document.getElementById('q').value.trim();
+    */ 
+    
+    form.addEventListener('submit', function(event){
+        event.preventDefault();
+
+        localStorage.setItem('Sid', sid);
+        localStorage.setItem('fname', fname);
+
+        /*
+        localStorage.setItem('bday', bday);
+        localStorage.setItem('em', em);
+        localStorage.setItem('mpn', mpn);
+        localStorage.setItem('gl', gl);
+        localStorage.setItem('poc', poc);
+        localStorage.setItem('q', q); */
+    });
 
 </script>
 
