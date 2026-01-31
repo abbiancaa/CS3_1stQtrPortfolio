@@ -82,7 +82,7 @@
 
 </style>
 
-<form method="post" onsubmit="return confirm('Confirm Submission?')" onreset="return res()" id="G2">
+<form method="post" onsubmit="return sub()" onreset="return res()">
     <fieldset>
         <legend class="leg">Personal Information</legend>
 
@@ -137,8 +137,8 @@
         <label for="q">Why do you want to join:</label><br>
         <textarea class="txt" onblur="blurF(this)" id="q" name="q" required></textarea><hr>
 
-        <button class="buttons" type="submit">Submit</button>
-        <button class="buttons" type="reset">Reset</button>
+        <input class="buttons" type="submit" value="Submit">
+        <input class="buttons" type="reset" value="Reset">
         <button id="vsu" onclick="window.location.href='viewSignUps.html'">View Sign Ups</button>
 
 </form>
@@ -162,24 +162,57 @@
 
     //confirm submission and reset
     function sub(){
-        if(confirm('Confirm submission?')){
-            return true;
-        }
-        else{
+        if(!confirm('Confirm submission?')){
             return false;
         }
+
+        let Mform = JSON.parse(localStorage.getItem("cform")) || [];
+
+        let info = {
+            SId: document.getElementById("Sid").value,
+            name: document.getElementById("fname").value,
+            bday: document.getElementById("bday").value,
+            em: document.getElementById("em").value,
+
+            phoneNo: document.getElementById("mpn").value,
+            grade: document.getElementById("gl").value,
+            inex: document.querySelector('input[name="in_ex"]:checked').value,
+            club: document.getElementById("poc").value,
+
+            question: document.getElementById("q").value
+        }
+
+        Mform.push(info);
+        localStorage.setItem("cform", JSON.stringify(Mform));
     }
 
     function res(){
-        if(confirm('Confirm reset of information?')){
-            return true;
-        }
-        else{
+        if(!confirm('Confirm reset of information?')){
             return false;
         }
     }
 
-    
+    function escapeHtml(s) {
+      let str = String(s);
+      let escapedStr = "";
+      for (let i = 0; i < str.length; i++) {
+        let c = str[i];
+        if (c === '&') {
+          escapedStr += '&amp;';
+        } else if (c === '<') {
+          escapedStr += '&lt;';
+        } else if (c === '>') {
+          escapedStr += '&gt;';
+        } else if (c === '"') {     
+          escapedStr += '&quot;';
+        } else if (c === "'") {
+          escapedStr += '&#39;';
+        } else {
+          escapedStr += c;
+        }
+      }
+      return escapedStr;
+    }
 
     //local storage 
     /* const formD = {
@@ -194,35 +227,34 @@
         q: q.value
     } */
 
-    const form = document.getElementById('G2');
+    /* const form = document.getElementById('G2');
 
     const sid = document.getElementById('Sid').value.trim();
     const fname = document.getElementById('fname').value.trim();
-    /* const bday = document.getElementById('bday').value.trim();
+    const bday = document.getElementById('bday').value.trim();
     const em = document.getElementById('em').value.trim();
 
     const mpn = document.getElementById('mpn').value.trim();
     const gl = document.getElementById('gl').value.trim();
-    const in_ex = document.querySelector('input[name="in_ex"]:checked').value;
+    // const in_ex = document.querySelector('input[name="in_ex"]:checked').value;
     const poc = document.getElementById('poc').value.trim();
 
     const q = document.getElementById('q').value.trim();
-    */ 
+
     
     form.addEventListener('submit', function(event){
         event.preventDefault();
 
         localStorage.setItem('Sid', sid);
         localStorage.setItem('fname', fname);
-
-        /*
+        
         localStorage.setItem('bday', bday);
         localStorage.setItem('em', em);
         localStorage.setItem('mpn', mpn);
         localStorage.setItem('gl', gl);
         localStorage.setItem('poc', poc);
-        localStorage.setItem('q', q); */
-    });
+        localStorage.setItem('q', q);
+    }); */
 
 </script>
 

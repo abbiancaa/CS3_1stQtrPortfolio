@@ -37,24 +37,85 @@
         box-sizing: border-box;
         background-color: white;;
     }
+
+    table{
+        width: 90%;
+        margin: 10px;
+        text-align: center;
+        border: 1px solid #9784cc;
+    }
 </style>
 
 <body>
     <button id="bsf" onclick="window.location.href='Q3_2GSodiumMalang.html'">Back to Sign Up Form</button><br>
 
     <label for="filter">Filter by Club:</label>
-    <select id="filter" onchange="clubFilter()">
-        <option value="">All Clubs</option>
-        <option value="Aksis">Aksis</option>
-        <option value="Alianti">Alianti</option>
-        <option value="Math Club">Math Club</option>
-        <option value="Pallastro">Pallastro</option>
-        <option value="Pisay.XYZ">Pisay.XYZ</option>
-        <option value="Sagala">Sagala</option>
+    <select id="filter" onchange="clubDisplay()">
+        <option value="AC">All Clubs</option>
+        <option value="Ak">Aksis</option>
+        <option value="Al">Alianti</option>
+        <option value="MC">Math Club</option>
+        <option value="Pa">Pallastro</option>
+        <option value="XYZ">Pisay.XYZ</option>
+        <option value="Sa">Sagala</option>
     </select> <br><br>
     <ul id="signUpList"></ul>
 
-    <p>Total Sign Ups: </p>
+    <p id="suCount"></p>
+    <p id="empty">No sign ups found for selected club.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Club</th>
+                <th>Student ID</th>
+                <th>Full Name</th>
+                <th>Grade Level</th>
+                <th>Email Adress</th>
+                <th>Mobile Phone Number</th>
+                <th>Intern/Extern</th>
+            </tr>
+        </thead>
+        <tbody id="cTable"></tbody>
+    </table>
+
+    <script>
+        function clubDisplay(){
+            let info = JSON.parse(localStorage.getItem('cform')) || [];
+
+            const filter = document.getElementById('filter').value;
+            const table = document.getElementById('cTable');
+
+            cTable.innerHTML = '';
+            for(let i = 0; i < info.length; i++){
+
+                if(filter === "AC" || info[i].poc === filter){
+
+                    cTable.innerHTML += `
+                    <tr>
+                        <td>${info[i].club}</td>
+                        <td>${info[i].SId}</td>
+                        <td>${info[i].name}</td>
+                        <td>${info[i].grade}</td>
+                        <td>${info[i].em}</td>
+                        <td>${info[i].phoneNo}</td>
+                        <td>${info[i].inex}</td>
+                    </tr>
+                    `;
+                }
+            }
+
+            let c = cTable.rows.length;
+            document.getElementById('suCount').innerText = "Total Sign Ups: " + c;
+            
+            if(c === 0){
+                document.getElementById('empty').style.display = "block";
+            }
+            else{
+                document.getElementById('empty').style.display = "none";
+            }
+        }
+    </script>
 
 </body>
 

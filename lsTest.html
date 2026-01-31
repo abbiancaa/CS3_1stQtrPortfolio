@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <h1>Local Storage Test</h1>
+
+<form onsubmit="return sub()" onreset="return res()">
+    <input id="name" placeholder="Your name" required>
+    <input id="note" placeholder="Short note" required>
+    <button id="submit" type="submit">submit</button>
+</form>
+
+<script>
+    /* document.getElementById('submit').addEventListener('click', function(event){
+        event.preventDefault();
+
+        const nameInput = document.getElementById('name');
+        const noteInput = document.getElementById('note');
+
+        const name = nameInput.value.trim();
+        const note = noteInput.value.trim();
+
+        if(name === '' || note === ''){
+            alert('Please fill in both fields.');
+            return;
+        }
+
+        const notes = loadNotes();
+        const timestamp = new Date().toLocaleString();
+
+        notes.push({
+            name: name,
+            text: note,
+            time: timestamp
+        });
+
+        saveNotes(notes);
+        render();
+
+        nameInput.value = '';
+        noteInput.value = '';
+    });
+
+    render(); 
+
+    function sub(){
+        if(!confirm('Confirm submission?')){
+            return false;
+        }
+    }
+
+    function res(){
+        if(!confirm('Confirm reset of information?')){
+            return false;
+        }
+    }
+    */ 
+   function sForm() {
+
+    let invalids = document.querySelectorAll(".invalid");
+    if (invalids.length > 0) {
+        alert("Please fill out all required fields.");
+        return false;
+    }
+  
+    if (!confirm("Do you want to submit this form?")) return false;
+
+    let signups = JSON.parse(localStorage.getItem("cSignup")) || [];
+    let status = document.querySelector('input[name="status"]:checked');
+
+    let signup = {
+        studentID: document.getElementById("StudentID").value,
+        name: document.getElementById("fname").value,
+        birthday: document.getElementById("bday").value,
+        email: document.getElementById("mail").value,
+        phone: document.getElementById("phone").value,
+        grade: document.getElementById("year").value,
+        status: status ? status.value : "",
+        club: document.getElementById("club").value,
+        message: document.getElementById("message").value,
+    };
+
+    signups.push(signup);
+    localStorage.setItem("cSignup", JSON.stringify(signups));
+
+    alert("Signup saved!");
+    return false;
+}
+
+</script>
+
+</body>
+</html>
