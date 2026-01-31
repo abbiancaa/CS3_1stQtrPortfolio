@@ -140,7 +140,7 @@
 
         <input class="buttons" type="submit" value="Submit">
         <input class="buttons" type="reset" value="Reset">
-        <button type="button" id="vsu" onclick="View()">View Sign Ups</button>
+        <button type="button" id="vsu" onclick="window.location.href = 'viewSignUps.html'">View Sign Ups</button>
 
 </form>
 
@@ -192,10 +192,6 @@
         if(!confirm('Confirm reset of information?')){
             return false;
         }
-    }
-
-    function View(){
-        window.location.href = "viewSignUps.html";
     }
 
     //credits to tala for helping me with the local storage part <3
