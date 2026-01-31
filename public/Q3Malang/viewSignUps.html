@@ -44,6 +44,16 @@
         text-align: center;
         border: 1px solid #9784cc;
     }
+
+    th, td{
+        border: 1px solid #9784cc;
+        padding: 8px;
+    }
+
+    thead{
+        background-color: rgb(94, 71, 115);
+        color: white;
+    }
 </style>
 
 <body>
@@ -52,12 +62,12 @@
     <label for="filter">Filter by Club:</label>
     <select id="filter" onchange="clubDisplay()">
         <option value="AC">All Clubs</option>
-        <option value="Ak">Aksis</option>
-        <option value="Al">Alianti</option>
-        <option value="MC">Math Club</option>
-        <option value="Pa">Pallastro</option>
-        <option value="XYZ">Pisay.XYZ</option>
-        <option value="Sa">Sagala</option>
+        <option value="Aksis">Aksis</option>
+        <option value="Alianti">Alianti</option>
+        <option value="Math Club">Math Club</option>
+        <option value="Pallastro">Pallastro</option>
+        <option value="Pisay.XYZ">Pisay.XYZ</option>
+        <option value="Sagala">Sagala</option>
     </select> <br><br>
     <ul id="signUpList"></ul>
 
@@ -86,20 +96,21 @@
             const filter = document.getElementById('filter').value;
             const table = document.getElementById('cTable');
 
-            cTable.innerHTML = '';
+            cTable.innerHTML = "";
             for(let i = 0; i < info.length; i++){
+                let data = info[i];
 
-                if(filter === "AC" || info[i].poc === filter){
+                if(filter === "AC" || data.club === filter){
 
                     cTable.innerHTML += `
                     <tr>
-                        <td>${info[i].club}</td>
-                        <td>${info[i].SId}</td>
-                        <td>${info[i].name}</td>
-                        <td>${info[i].grade}</td>
-                        <td>${info[i].em}</td>
-                        <td>${info[i].phoneNo}</td>
-                        <td>${info[i].inex}</td>
+                        <td>${data.club}</td>
+                        <td>${data.SId}</td>
+                        <td>${data.name}</td>
+                        <td>${data.grade}</td>
+                        <td>${data.em}</td>
+                        <td>${data.phoneNo}</td>
+                        <td>${data.inex}</td>
                     </tr>
                     `;
                 }
@@ -115,6 +126,8 @@
                 document.getElementById('empty').style.display = "none";
             }
         }
+
+        clubDisplay();
     </script>
 
 </body>

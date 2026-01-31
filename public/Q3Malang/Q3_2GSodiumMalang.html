@@ -8,8 +8,6 @@
 
 </head>
 
-<h1>Club Sign Up Form</h1>
-
 <style>
     h1{
         text-align: center;
@@ -82,7 +80,10 @@
 
 </style>
 
-<form action="submit" method="post" onsubmit="return sub()" onreset="return res()">
+<body>
+<h1>Club Sign Up Form</h1>
+
+<form method="post" onsubmit="return sub()" onreset="return res()">
     <fieldset>
         <legend class="leg">Personal Information</legend>
 
@@ -139,7 +140,7 @@
 
         <input class="buttons" type="submit" value="Submit">
         <input class="buttons" type="reset" value="Reset">
-        <button id="vsu" onclick="View()">View Sign Ups</button>
+        <button type="button" id="vsu" onclick="View()">View Sign Ups</button>
 
 </form>
 
@@ -180,10 +181,11 @@
             club: document.getElementById("poc").value,
 
             question: document.getElementById("q").value
-        }
+        };
 
         Mform.push(info);
         localStorage.setItem("cform", JSON.stringify(Mform));
+        return false;
     }
 
     function res(){
@@ -196,30 +198,10 @@
         window.location.href = "viewSignUps.html";
     }
 
-    function escapeHtml(s) {
-      let str = String(s);
-      let escapedStr = "";
-      for (let i = 0; i < str.length; i++) {
-        let c = str[i];
-        if (c === '&') {
-          escapedStr += '&amp;';
-        } else if (c === '<') {
-          escapedStr += '&lt;';
-        } else if (c === '>') {
-          escapedStr += '&gt;';
-        } else if (c === '"') {     
-          escapedStr += '&quot;';
-        } else if (c === "'") {
-          escapedStr += '&#39;';
-        } else {
-          escapedStr += c;
-        }
-      }
-      return escapedStr;
-    }
-
     //credits to tala for helping me with the local storage part <3
 
 </script>
+
+</body>
 
 </html>
