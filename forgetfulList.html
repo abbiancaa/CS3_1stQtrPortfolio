@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<html>
+    <input type="text" id="taskInput">
+    <button id="addBtn">Add Task</button>
+    <ul id="taskList"></ul>
+
+    <script>
+    let tasks = [];
+
+    // 1. MISSING: You need code here to LOAD from localStorage on start!
+    var jTasks = JSON.parse(localStorage.getItem("myTasks"));
+
+    if(jTasks){
+        tasks = JSON.parse(localStorage.getItem("myTasks")) || [];
+        render();
+    }
+
+    document.querySelector('#addBtn').addEventListener('click', () => {
+        const task = document.querySelector('#taskInput').value;
+        tasks.push(task);
+        render();
+        
+        // 2. MISSING: You need code here to SAVE to localStorage!
+        localStorage.setItem("myTasks", JSON.stringify(tasks));
+    });
+
+    function render() {
+        document.querySelector('#taskList').innerHTML = tasks.map(t => `<li>${t}</li>`).join('');
+    }
+    </script>
+
+</html>

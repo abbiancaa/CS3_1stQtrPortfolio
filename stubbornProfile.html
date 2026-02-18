@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<html>
+
+    <style>
+    .profile-wrapper {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+    .sidebar { width: 200px; background: lightgrey; }
+    .content { flex: 1; background: white; border: 1px solid black; }
+
+    /* 3. MISSING: Add a Media Query for max-width: 600px */
+    /* Change .profile-wrapper to flex-direction: column */
+    @media (max-width: 600px){
+        .profile-wrapper {
+        flex-direction: column;
+        }
+
+        .sidebar { width: 100%; }
+
+    }
+
+    </style>
+
+    <div class="profile-wrapper">
+    <div class="sidebar">Menu Links</div>
+    <div class="content">Main Profile Information goes here...</div>
+    </div>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<html>
+
+    <form id="userForm">
+    <input type="text" id="firstName" placeholder="First Name">
+    <input type="text" id="lastName" placeholder="Last Name">
+    <button type="submit">Create User</button>
+    </form>
+
+    <script>
+    document.querySelector('#userForm').addEventListener('submit', (e) => {
+        // 4. MISSING: Stop the form from refreshing the page!
+        e.preventDefault();
+        
+        // 5. MISSING: Create an object named 'user' with the input values
+        /* let user = {
+            first: ...,
+            last: ...
+        };
+        */
+
+        let user = {
+            first: document.querySelector('#firstName').value,
+            last: document.querySelector('#lastName').value
+        };
+        
+        console.log("Success!", user);
+    });
+    </script>
+
+</html>
