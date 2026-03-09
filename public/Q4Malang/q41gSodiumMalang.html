@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Anica Malang">
+    <title>Q4 1G Sodium Malang</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<style>
+    h1{
+        text-align: center;
+        color: #4f0c16;
+    }
+
+    html{
+        font-family: "Lexend";
+        font-size: larger;
+        background-color: #ffd9df;
+        background-image: linear-gradient(100deg, #fbd4dd, #F2AFBC, #e0586c);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    form{
+        background-color: #fce6ee;
+        padding: 30px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.35);
+        border-radius: 20px;
+        width: 450px;
+        margin: 10px auto;
+        color: #4f0c16;
+    }
+
+    .buttons{
+        width: 100%;
+        display: block;
+        justify-content: center;
+        gap: 5px;
+        font-size: large;
+    }
+
+    #vsu{
+        display: block; 
+        width: 100%;
+        margin: 2px 0 0 0;
+
+        justify-content: center; 
+        font-size: large; 
+        background-color: #c8edff; 
+
+        border: none; 
+        border-radius: 5px;
+        
+    }
+
+    input{
+        width: 100%;
+        height: auto;
+        margin-bottom: 1px;
+        font-size: large;
+        box-sizing: border-box;
+    }
+
+    input[name="in_ex"]{
+        width: auto;
+    }
+
+    select{
+        width: 100%;
+        height: auto;
+        margin-bottom: 1px;
+        font-family: "Lexend";
+        font-size: medium;
+        box-sizing: border-box;
+        background-color: white;;
+    }
+
+    input:focus, select:focus, textarea:focus{
+        outline: #4f0c16 solid 2px;
+        border-radius: 5px;
+        border-width: 1.5px;
+    }
+
+</style>
+
+<body>
+
+<form>
+    <h1>Add a Movie</h1>
+
+    <label for="title">Title:</label><br>
+    <input class="txt" type="text" id="title" name="title" required><br><br>
+
+    <label for="date">Release Year:</label><br>
+    <input class="number" type="text" id="date" name="date" required><br><br>
+
+    <label for="genre">Genre:</label><br>
+        <select id="genre" name="genre" required>
+            <option value="Select Genre">Select Genre</option>
+            <option value="Action">Action</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Drama">Drama</option>
+            <option value="Horror">Horror</option>
+            <option value="Romance">Romance</option>
+        </select> <br><br>
+
+    <div class="rating">
+        <label for="stars">Rating:</label><br>
+        <div name="stars" id="stars">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+        </div>
+    </div>
+</form>
+
+<script>
+    /* const stars = document.querySelectorAll('#stars i');
+    stars.forEach((star, index) => {
+        star.addEventListener('click', () => {
+            stars.forEach((s, i) => {
+                s.classList.toggle('fa-star', i <= index);
+                s.classList.toggle('fa-star-o', i > index);
+            });
+        });
+    }); */
+</script>
+
+</body>
+</html>
