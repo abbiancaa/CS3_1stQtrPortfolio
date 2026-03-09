@@ -11,6 +11,7 @@
 
 <style>
     h1{
+        margin: 0.7rem;
         text-align: center;
         color: #4f0c16;
     }
@@ -24,7 +25,7 @@
         background-attachment: fixed;
     }
 
-    form{
+    form, #listCont{
         background-color: #fce6ee;
         padding: 30px;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.35);
@@ -34,26 +35,21 @@
         color: #4f0c16;
     }
 
+    ul{
+        padding: 0 1rem;
+    }
+
     .buttons{
         width: 100%;
         display: block;
         justify-content: center;
-        gap: 5px;
         font-size: large;
-    }
+        padding: 5px;
 
-    #vsu{
-        display: block; 
-        width: 100%;
-        margin: 2px 0 0 0;
-
-        justify-content: center; 
-        font-size: large; 
-        background-color: #c8edff; 
-
-        border: none; 
+        background-color: #e0586c;
+        color: white;
+        border: none;
         border-radius: 5px;
-        
     }
 
     input{
@@ -64,10 +60,6 @@
         box-sizing: border-box;
     }
 
-    input[name="in_ex"]{
-        width: auto;
-    }
-
     select{
         width: 100%;
         height: auto;
@@ -76,6 +68,17 @@
         font-size: medium;
         box-sizing: border-box;
         background-color: white;;
+    }
+
+    .rating{
+        display: flex;
+        font-size: 1.3rem;
+        gap: 5px;
+        cursor: pointer;
+    }
+
+    .rating .checked{
+        color: #f0cd5a;
     }
 
     input:focus, select:focus, textarea:focus{
@@ -95,7 +98,7 @@
     <input class="txt" type="text" id="title" name="title" required><br><br>
 
     <label for="date">Release Year:</label><br>
-    <input class="number" type="text" id="date" name="date" required><br><br>
+    <input class="txt" type="number" id="date" name="date" required><br><br>
 
     <label for="genre">Genre:</label><br>
         <select id="genre" name="genre" required>
@@ -107,28 +110,74 @@
             <option value="Romance">Romance</option>
         </select> <br><br>
 
-    <div class="rating">
-        <label for="stars">Rating:</label><br>
-        <div name="stars" id="stars">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
+    <div class="container">
+        <label for="sCont">Rating:</label><br>
+
+        <div id="sCont" class="rating">
+            <span data-value="1" class="fa fa-star"></span>
+            <span data-value="2" class="fa fa-star"></span>
+            <span data-value="3" class="fa fa-star"></span>
+            <span data-value="4" class="fa fa-star"></span>
+            <span data-value="5" class="fa fa-star"></span>
         </div>
-    </div>
+    </div> <hr>
+
+    <button type="submit" id="add" class="buttons">Add Movie</button>
 </form>
 
+<div id="listCont">
+    <h1>Movie List</h1>
+    <ul id="Main"></ul>
+</div>
+
 <script>
-    /* const stars = document.querySelectorAll('#stars i');
-    stars.forEach((star, index) => {
-        star.addEventListener('click', () => {
-            stars.forEach((s, i) => {
-                s.classList.toggle('fa-star', i <= index);
-                s.classList.toggle('fa-star-o', i > index);
-            });
+
+    let rating = 0;
+    document.querySelectorAll('#sCont span').forEach(s => {
+        s.onclick = function(){
+            rating = this.getAttribute("data-value");
+            addStars(rating);
+        }
+    });
+
+    function addStars(){
+        document.querySelectorAll('#sCont span').forEach(s => {
+            s.classList.toggle("checked", s.getAttribute("data-value") <= rating);
         });
-    }); */
+    }
+
+    let allMovies = [];
+
+    var jlist = JSON.parse(localStorage.getItem("allMovies"));
+
+    if(jlist){
+        allMovies = jlist || [];
+        render();
+    }
+
+    document.querySelector('#add').addEventListener('click', (e) => {
+        e.preventDefault();
+
+        movieO = {
+            title: document.querySelector('#title').value,
+            date: document.querySelector('#date').value,
+            genre: document.querySelector('#genre').value,
+            rating: rating
+        }
+
+        allMovies.push(movieO);
+        render();
+        
+        localStorage.setItem("allMovies", JSON.stringify(allMovies));
+
+        console.log("Movie added!" + JSON.stringify(allMovies));
+    });
+
+    function render() {
+        document.querySelector('#Main').innerHTML = allMovies.map(m => 
+            `<li>${m.title} (${m.date}) - ${m.genre}, Rating: <span style="color: #f0cd5a;">
+            ${"★".repeat(m.rating)}</span></li>`).join('');
+    }
 </script>
 
 </body>
