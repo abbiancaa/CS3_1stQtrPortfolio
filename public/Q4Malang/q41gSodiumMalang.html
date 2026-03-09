@@ -132,6 +132,7 @@
 
 <script>
 
+    //for the stars
     let rating = 0;
     document.querySelectorAll('#sCont span').forEach(s => {
         s.onclick = function(){
@@ -170,9 +171,11 @@
         
         localStorage.setItem("allMovies", JSON.stringify(allMovies));
 
+        //for testing purposes
         console.log("Movie added!" + JSON.stringify(allMovies));
     });
 
+    //listing it all down
     function render() {
         document.querySelector('#Main').innerHTML = allMovies.map(m => 
             `<li>${m.title} (${m.date}) - ${m.genre}, Rating: <span style="color: #f0cd5a;">
