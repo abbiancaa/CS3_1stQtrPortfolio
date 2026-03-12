@@ -50,6 +50,7 @@
         color: white;
         border: none;
         border-radius: 5px;
+        cursor: pointer;
     }
 
     input{
@@ -177,9 +178,18 @@
 
     //listing it all down
     function render() {
-        document.querySelector('#Main').innerHTML = allMovies.map(m => 
+        document.querySelector('#Main').innerHTML = allMovies.map(m, index => 
             `<li>${m.title} (${m.date}) - ${m.genre}, Rating: <span style="color: #f0cd5a;">
-            ${"★".repeat(m.rating)}</span></li>`).join('');
+            ${"★".repeat(m.rating)}</span> <button onclick="deleteMovie(${index})">Delete</button> </li>`)
+            .join('');     
+    }
+
+    function deleteMovie(index){
+        if(confirm("Are you sure you want to delete this movie?")){
+            allMovies.splice(index, 1);
+            render();
+            localStorage.setItem("allMovies", JSON.stringify(allMovies));
+        }
     }
 </script>
 
