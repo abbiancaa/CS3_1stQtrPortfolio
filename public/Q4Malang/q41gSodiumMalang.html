@@ -30,7 +30,7 @@
         padding: 30px;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.35);
         border-radius: 20px;
-        width: 450px;
+        width: 500px;
         margin: 10px auto;
         color: #4f0c16;
     }
@@ -178,9 +178,9 @@
 
     //listing it all down
     function render() {
-        document.querySelector('#Main').innerHTML = allMovies.map(m, index => 
-            `<li>${m.title} (${m.date}) - ${m.genre}, Rating: <span style="color: #f0cd5a;">
-            ${"★".repeat(m.rating)}</span> <button onclick="deleteMovie(${index})">Delete</button> </li>`)
+        document.querySelector('#Main').innerHTML = allMovies.map((movie0, index) => 
+            `<li>${movie0.title} (${movie0.date}) - ${movie0.genre}, Rating: <span style="color: #f0cd5a;">
+            ${"★".repeat(movie0.rating)}</span> <button onclick="deleteMovie(${index})">Delete</button> </li>`)
             .join('');     
     }
 
