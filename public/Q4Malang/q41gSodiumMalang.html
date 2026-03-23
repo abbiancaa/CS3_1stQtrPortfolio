@@ -133,7 +133,7 @@
 
 <script>
 
-    //for the stars, creds to zy for help with the rating system <3
+    //for the stars, creds to zy for help with this <3
     let rating = 0;
     document.querySelectorAll('#sCont span').forEach(s => {
         s.onclick = function(){
@@ -142,7 +142,7 @@
         }
     });
 
-    function addStars(){
+    function addStars(rating){
         document.querySelectorAll('#sCont span').forEach(s => {
             s.classList.toggle("checked", s.getAttribute("data-value") <= rating);
         });
@@ -157,23 +157,55 @@
         render();
     }
 
+
     document.querySelector('#add').addEventListener('click', (e) => {
         e.preventDefault();
 
-        movieO = {
-            title: document.querySelector('#title').value,
-            date: document.querySelector('#date').value,
-            genre: document.querySelector('#genre').value,
-            rating: rating
-        }
-
-        allMovies.push(movieO);
-        render();
-        
-        localStorage.setItem("allMovies", JSON.stringify(allMovies));
+        var t = document.querySelector('#title').value;
+        var d = document.querySelector('#date').value;
+        var g = document.querySelector('#genre').value;
 
         //for testing purposes
         console.log("Movie added!" + JSON.stringify(allMovies));
+
+        //average rating
+
+        const ind = jlist.findIndex(movie0 => movie0.title.toLowerCase() === t.toLowerCase());
+
+        if(ind !== -1){
+            let eMovie = jlist[ind];
+
+            var ave = (parseFloat(eMovie.rating) + parseFloat(rating)) / 2;
+
+            console.log(eMovie.rating);
+            console.log(rating);
+            console.log(ave);
+
+            jlist[ind].date = d;
+            jlist[ind].genre = g;
+            jlist[ind].rating = Math.round(ave);
+
+            console.log(jlist[ind].rating);
+            console.log(Math.round(ave));
+        }
+        else{
+            let movieO = {
+                title: t,
+                date: d,
+                genre: g,
+                rating: rating
+            }
+            allMovies.push(movieO);
+        }
+
+        localStorage.setItem("allMovies", JSON.stringify(allMovies));
+
+        document.querySelector('#title').value = '';
+        document.querySelector('#date').value = '';
+        rating = 0;
+
+        addStars(0);
+        render();
     });
 
     //listing it all down
